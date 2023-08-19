@@ -1,6 +1,9 @@
 import express from "express";
+import { homeRouter } from "./routes/home.js";
+
 
 const app = express();
+app.use(express.json())
 
 app.get('/api/get-products', (req, res) => {
   try {
@@ -19,6 +22,8 @@ app.get('/about', (req, res) => res.send(`
 <li>three</li>
 </ul>
 `));
+
+app.use("/home", homeRouter);
 
 app.get('/portfolio', (req, res) => res.send('Portfolio Page Route'));
 
