@@ -1,5 +1,4 @@
 import express from "express";
-import { homeRouter } from "./routes/home.js";
 import cors from "cors";
 
 
@@ -17,15 +16,27 @@ app.get('/api/get-products', (req, res) => {
 });
 
 app.get('/about', (req, res) => res.send(`
+<style>
+.ul {
+  cursor: pointer;
+}
+</style>
+<h1>Change back</h1>
+
 <div>Hello World</div>
-<ul>
+<ul class='ul'>
 <li>one</li>
 <li>two</li>
 <li>three</li>
 </ul>
+<script>
+const elem = document.querySelector('.ul')
+elem.addEventListener('click', () => {
+  console.log('Hello')
+})
+</script>
 `));
 
-app.use("/home", homeRouter);
 
 app.get('/portfolio', (req, res) => res.send('Portfolio Page Route'));
 
